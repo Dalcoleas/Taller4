@@ -19,7 +19,22 @@
 //        repository = BookRepository(bookDao)
 //    }
 //
-//    fun getBooksList(): LiveData<List<Book>> = repository.getAll()
+//    fun getAllBooks(): LiveData<List<Book>> = repository.getAll()
+//
+// /** Buscar libro según título **/
+//    fun searchBookByTitle(title: String): LiveData<List<Book>> = repository.searchByTitle(title)
+//
+// /** Buscar libro según Author **/
+//    fun searchBookByAuthor(author: String): LiveData<List<Book>> = repository.searchByAuthor(author)
+//
+// /** Buscar libro según Editorial**/
+//    fun searchBookByPublisher(publisher: String): LiveData<List<Book>> = repository.searchByPublisher(publisher)
+//
+// /** Buscar libro según Tag**/
+//    fun searchBookByTag(publisher: String): LiveData<List<Book>> = repository.searchByTag(tag)
+//
+// /** Buscar libro según ISBN**/
+//    fun searchBookByPublisher(isbn: String): LiveData<List<Book>> = repository.searchByIsbn(isbn)
 //
 //    fun insert(book: Book) =
 //        viewModelScope.launch(Dispatchers.IO)
