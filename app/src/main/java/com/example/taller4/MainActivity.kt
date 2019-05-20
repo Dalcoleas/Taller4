@@ -2,6 +2,7 @@ package com.example.taller4
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.taller4.R
 
 class MainActivity : AppCompatActivity() {
 
