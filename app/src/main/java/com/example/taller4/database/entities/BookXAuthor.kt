@@ -3,29 +3,10 @@ package com.example.taller4.database.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 
-@Entity(tableName="books")
-data class BookXAuthor (
-    @ColumnInfo(name = "book_title")
-    val title:String,
-
-    @ColumnInfo(name = "book_edition")
-    val edition:Int,
-
-    @ColumnInfo(name = "book_isbn")
-    val isbn:String,
-
-    @ColumnInfo(name = "book_summary")
-    val summary:String,
-
-    @ColumnInfo(name = "book_cover")
-    val cover:String,
-
-    @ColumnInfo(name = "book_publisher")
-    val idpublisher:Int
-
-){
-    @PrimaryKey(autoGenerate = true)
-    var id:Int=0
-}
+@Entity(foreignKeys = arrayOf(ForeignKey(entity = Author::class,
+    parentColumns = arrayOf("id"),
+    childColumns = arrayOf("author_id"),
+    onDelete = ForeignKey.CASCADE)))
