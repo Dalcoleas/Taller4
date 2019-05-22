@@ -10,27 +10,27 @@ data class Book (
     val title:String,
 
     @ColumnInfo(name = "book_author")
-    val author:String,
+    val idauthor:int,
 
     @ColumnInfo(name = "book_edition")
-    val edition:String,
+    val edition:int,
 
-    @ColumnInfo(name = "book_lsvn")
-    val lsvn:String,
+    @ColumnInfo(name = "book_isbn")
+    val isbn:String,
 
-    @ColumnInfo(name = "book_resume")
-    val resume:String,
+    @ColumnInfo(name = "book_summary")
+    val summary:String,
 
     @ColumnInfo(name = "book_tag")
     val tag:String,
 
-    @ColumnInfo(name = "book_portada")
-    val portada:String,
+    @ColumnInfo(name = "book_cover")
+    val cover:String,
 
     @ColumnInfo(name = "book_publisher")
-    val publisher:String
+    val idpublisher:int
 
 ){
     @PrimaryKey(autoGenerate = true)
-    var id:Long=0
+    var id:int=0
 }

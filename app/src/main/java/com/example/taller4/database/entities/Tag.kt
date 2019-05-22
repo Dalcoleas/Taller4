@@ -10,7 +10,7 @@ data class Tag (
         val tag_name:String
 ){
     @PrimaryKey(autoGenerate = true)
-    var id:Long=0
+    var id:int=0
 }
 
 
