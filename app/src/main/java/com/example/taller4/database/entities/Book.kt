@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity(tableName="publishers")
+@Entity(tableName="books")
 data class Book (
     @ColumnInfo(name = "book_title")
     val title:String,
