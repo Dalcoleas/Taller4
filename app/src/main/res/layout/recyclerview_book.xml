@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+        android:id="@+id/cv"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="4dp"
+        app:cardMaxElevation="4dp"
+        app:cardElevation="2dp"
+        app:contentPadding="5dp"
+        android:padding="5dp"
+        android:layout_margin="10dp"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+            android:id="@+id/linear"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="4dp"
+            android:layout_margin="5dp"
+            android:orientation="vertical">
+        <ImageView
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/img_book"
+                android:layout_gravity="center"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_marginBottom="3dp"/>
+        <TextView
+                android:textColor="@android:color/black"
+                android:id="@+id/tv_title_book"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="20dp"
+                android:text="Title"/>
+
+        <TextView
+                android:textColor="@android:color/black"
+                android:id="@+id/tv_author_book"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Author"/>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
