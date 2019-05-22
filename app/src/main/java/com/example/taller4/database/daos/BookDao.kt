@@ -12,4 +12,9 @@ interface BookDao {
 
     @Query("DELETE FROM books")
     fun nukeTable()//elimina la tabla
+
+
+    @Query("SELECT * FROM books WHERE book_title LIKE :search ")
+    fun findBookbyTitle(search: String): LiveData<List<Book>>
+
 }
