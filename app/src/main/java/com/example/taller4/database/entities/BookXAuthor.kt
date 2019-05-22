@@ -1,3 +1,4 @@
+
 package com.example.taller4.database.entities
 
 import androidx.room.ColumnInfo
@@ -5,7 +6,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName="books")
-data class Book (
+data class BookXAuthor (
     @ColumnInfo(name = "book_title")
     val title:String,
 

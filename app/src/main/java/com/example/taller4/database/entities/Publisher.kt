@@ -11,5 +11,5 @@ data class Publisher (
     val publisher_name:String
 ){
     @PrimaryKey(autoGenerate = true)
-    var id:int=0
+    var id:Int=0
 }
