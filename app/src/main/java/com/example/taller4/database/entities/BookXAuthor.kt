@@ -1,12 +1,15 @@
 
 package com.example.taller4.database.entities
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.PrimaryKey
+import androidx.room.*
 
-@Entity(foreignKeys = arrayOf(ForeignKey(entity = Author::class,
-    parentColumns = arrayOf("id"),
-    childColumns = arrayOf("author_id"),
-    onDelete = ForeignKey.CASCADE)))
+
+class BookXAuthor{
+    @Embedded
+    var book: Book = Book(0,"",0,"","","",0)
+
+    @Relation(parentColumn = "id",
+        entityColumn = "book_id",
+        entity = Author::class)
+    var authors: List<Author> = listOf()
+}

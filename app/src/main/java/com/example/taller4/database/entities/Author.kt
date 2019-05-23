@@ -8,11 +8,11 @@ import androidx.room.PrimaryKey
 @Entity(tableName="authors")
 data class Author (
     @ColumnInfo(name = "author_name")
-    val publisher_name:String,
+    val author_name:String,
 
     @ColumnInfo(name = "author_last_name")
-    val publisher_last_name:String
+    val author_last_name:String
 ){
     @PrimaryKey(autoGenerate = true)
-    var id:int=0
+    var id:Int=0
 }
