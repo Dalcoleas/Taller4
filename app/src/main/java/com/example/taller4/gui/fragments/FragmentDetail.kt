@@ -1,4 +1,4 @@
-package com.example.taller4.fragments
+package com.example.taller4.gui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

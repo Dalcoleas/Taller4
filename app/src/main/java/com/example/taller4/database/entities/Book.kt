@@ -26,14 +26,5 @@ data class Book (
     val cover:String,
 
     @ColumnInfo(name = "book_publisher")
-    val idpublisher:Int,
-
-    @Ignore
-    val authors : List<Author>,
-
-    @Ignore
-    val tags : List<Tag>
-
-
-
+    val idpublisher:Int
 )

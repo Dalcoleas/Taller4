@@ -1,11 +1,4 @@
-package com.example.taller4.activities
-
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import com.example.taller4.R
-import com.example.taller4.database.entities.Book
-import com.example.taller4.fragments.FragmentDetail
-import com.example.taller4.fragments.FragmentList
+package com.example.taller4.gui.activities
 
 /*class MainActivity : AppCompatActivity(),  FragmentList.ListenerTools{
 

@@ -12,11 +12,11 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/AppTheme">
-        <activity android:name=".activities.NewBookActivity">
+        <activity android:name="com.example.taller4.gui.activities.NewBookActivity">
         </activity>
-        <activity android:name=".activities.BookInfoActivity">
+        <activity android:name="com.example.taller4.gui.activities.BookInfoActivity">
         </activity>
-        <activity android:name=".activities.MainActivity">
+        <activity android:name="com.example.taller4.gui.activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

@@ -1,4 +1,4 @@
-package com.example.taller4.fragments
+package com.example.taller4.gui.fragments
 
 import android.content.res.Configuration
 import android.os.Bundle
@@ -9,9 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.taller4.R
-import com.example.taller4.adapters.BookListAdapter
+import com.example.taller4.gui.adapters.BookListAdapter
 import com.example.taller4.database.entities.Book
-import com.example.taller4.utilities.MyAdapter
+import com.example.taller4.gui.utilities.MyAdapter
 import kotlinx.android.synthetic.main.content_main.view.*
 
 class FragmentList  : Fragment(){

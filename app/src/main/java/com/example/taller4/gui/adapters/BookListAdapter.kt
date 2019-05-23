@@ -1,13 +1,12 @@
-package com.example.taller4.adapters
+package com.example.taller4.gui.adapters
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.taller4.R
 import com.example.taller4.database.entities.Book
-import com.example.taller4.utilities.MyAdapter
+import com.example.taller4.gui.utilities.MyAdapter
 import kotlinx.android.synthetic.main.recyclerview_book.view.*
 
 class BookListAdapter (var books: ArrayList<Book> , val clickListener: (Book) -> Unit) : RecyclerView.Adapter<BookListAdapter.BookViewHolder>(), MyAdapter {
