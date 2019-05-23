@@ -18,7 +18,7 @@ class FragmentList  : Fragment(){
 
     private lateinit var booksList : ArrayList<Book>
     private lateinit var bookAdapter : MyAdapter
-    var listenerTools : ListerTools? = null
+    var listenerTools : ListenerTools? = null
 
     companion object{
         fun newInstance(books : ArrayList<Book>): FragmentList{
@@ -28,7 +28,7 @@ class FragmentList  : Fragment(){
         }
     }
 
-    interface ListerTools{
+    interface ListenerTools{
         fun PortraitClick(book: Book)
         fun LandscapeClick(book: Book)
     }
