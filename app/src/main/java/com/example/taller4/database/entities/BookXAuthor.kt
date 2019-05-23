@@ -3,13 +3,15 @@ package com.example.taller4.database.entities
 
 import androidx.room.*
 
+@Entity(tableName = "bookxauthors")
+data class BookXAuthor(
 
-class BookXAuthor{
-    @Embedded
-    var book: Book = Book(0,"",0,"","","",0)
+    @PrimaryKey(autoGenerate = false)
+    @ForeignKey(entity = Author::class,parentColumns = arrayOf("id"),childColumns = arrayOf("idAuthor"),onDelete = ForeignKey.CASCADE )
+    @ColumnInfo(name = "idAuthor")
+    val idAuthor:Int,
+    @ForeignKey(entity = Book::class,parentColumns = arrayOf("id"),childColumns = arrayOf("idBook") ,onDelete = ForeignKey.CASCADE)
+    @ColumnInfo(name = "idBook")
+    val idBook:Int
 
-    @Relation(parentColumn = "id",
-        entityColumn = "book_id",
-        entity = Author::class)
-    var authors: List<Author> = listOf()
-}
+)
