@@ -2,6 +2,7 @@ package com.example.taller4.database.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 
 @Entity(tableName="books")
@@ -25,6 +26,14 @@ data class Book (
     val cover:String,
 
     @ColumnInfo(name = "book_publisher")
-    val idpublisher:Int
+    val idpublisher:Int,
+
+    @Ignore
+    val authors : List<Author>,
+
+    @Ignore
+    val tags : List<Tag>
+
+
 
 )

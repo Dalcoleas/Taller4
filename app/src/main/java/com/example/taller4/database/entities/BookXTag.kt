@@ -6,15 +6,11 @@ import androidx.room.ForeignKey
 import androidx.room.PrimaryKey
 import com.example.taller4.database.daos.TagDao
 
-@Entity(tableName = "bookxtags")
+@Entity(tableName = "bookxtags",foreignKeys =
+[ForeignKey (entity = Book::class, parentColumns = ["id"],childColumns = ["idBook"]),
+    ForeignKey(entity = Tag::class,parentColumns = ["id"],childColumns = ["idTag"] )],
+    primaryKeys = ["idBook","idTag"])
 data class BookXTag(
-
-    @PrimaryKey(autoGenerate = false)
-    @ForeignKey(entity = TagDao::class,parentColumns = arrayOf("id"),childColumns = arrayOf("idTag"),onDelete = ForeignKey.CASCADE )
-    @ColumnInfo(name = "idTag")
     val idTag:Int,
-    @ForeignKey(entity = Book::class,parentColumns = arrayOf("id"),childColumns = arrayOf("idBook") ,onDelete = ForeignKey.CASCADE)
-    @ColumnInfo(name = "idBook")
     val idBook:Int
-
 )
