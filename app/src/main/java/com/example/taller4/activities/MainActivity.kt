@@ -1,4 +1,4 @@
-package com.example.taller4
+package com.example.taller4.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

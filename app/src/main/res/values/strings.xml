@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Taller4</string>
+    <string name="search_bt">Buscar</string>
 </resources>
