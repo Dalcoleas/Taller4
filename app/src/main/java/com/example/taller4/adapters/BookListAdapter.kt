@@ -5,34 +5,32 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.taller4.R
 import com.example.taller4.database.entities.Book
+import com.example.taller4.utilities.MyAdapter
+import kotlinx.android.synthetic.main.recyclerview_book.view.*
 
-/*class BookListAdapter internal constructor(context: Context): RecyclerView.Adapter<BookListAdapter.BookViewHolder>(){
+class BookListAdapter (var books: ArrayList<Book> , val clickListener: (Book) -> Unit) : RecyclerView.Adapter<BookListAdapter.BookViewHolder>(), MyAdapter {
 
-    private val inflater: LayoutInflater = LayoutInflater.from(context)
-    private var books = emptyList<Book>() // Copia de palabras que están en caché
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookViewHolder {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.recyclerview_book, parent, false)
 
-    inner class BookViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-
+        return BookViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: BookViewHolder, position: Int) {
+    override fun getItemCount(): Int = books.size
 
-    }
+    override fun onBindViewHolder(holder: BookViewHolder, position: Int) = holder.bind(books[position], clickListener)
 
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookListAdapter.BookViewHolder {
-
-    }
-
-    override fun getItemCount() = books.size
-    }
-
-
-    internal fun setBooks(books: List<Book>){
+    override fun changeDataSet(books: ArrayList<Book>) {
         this.books = books
         notifyDataSetChanged()
     }
 
-
-}*/
+    class BookViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        fun bind(book: Book, clickListener: (Book) -> Unit) = with(itemView) {
+            //img_book -> setear imagen
+            tv_title_book.text = book.title
+        }
+    }
+}

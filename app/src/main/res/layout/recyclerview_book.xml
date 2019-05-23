@@ -34,12 +34,5 @@
                 android:textSize="20dp"
                 android:text="Title"/>
 
-        <TextView
-                android:textColor="@android:color/black"
-                android:id="@+id/tv_author_book"
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="Author"/>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
