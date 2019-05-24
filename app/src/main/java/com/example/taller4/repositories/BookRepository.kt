@@ -8,12 +8,17 @@ import com.example.taller4.database.entities.Book
 class BookRepository(private val bookDao : BookDao){
 
 
-    val allBooks : LiveData<List<Book>> = bookDao.getAll()
+    var allBooks : LiveData<List<Book>> = bookDao.getAll()
 
     @WorkerThread
     suspend fun insert(book: Book){
+
         bookDao.insert(book)
 
+    }
+    @WorkerThread
+    fun searchByTitle(title : String){
+      allBooks = bookDao.findBookbyTitle(title)
     }
 
 }

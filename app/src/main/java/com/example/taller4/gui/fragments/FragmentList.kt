@@ -11,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.taller4.R
 import com.example.taller4.gui.adapters.BookListAdapter
 import com.example.taller4.database.entities.Book
-import com.example.taller4.gui.utilities.AppConstants
+//import com.example.taller4.gui.utilities.AppConstants
 import com.example.taller4.gui.utilities.MyAdapter
 import kotlinx.android.synthetic.main.content_main.view.*
 
