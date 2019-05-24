@@ -2,7 +2,7 @@ package com.example.taller4.gui.utilities
 
 import com.example.taller4.database.entities.Book
 
-object AppConstans{
+object AppConstants{
     val dataset_saveinstance_key = "CLE"
     val MAIN_LIST_KEY = "key_list_books"
 }

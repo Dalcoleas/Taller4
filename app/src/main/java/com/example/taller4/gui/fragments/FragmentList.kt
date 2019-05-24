@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.taller4.R
 import com.example.taller4.gui.adapters.BookListAdapter
 import com.example.taller4.database.entities.Book
+import com.example.taller4.gui.utilities.AppConstants
 import com.example.taller4.gui.utilities.MyAdapter
 import kotlinx.android.synthetic.main.content_main.view.*
 
@@ -21,9 +22,9 @@ class FragmentList  : Fragment(){
     var listenerTools : ListenerTools? = null
 
     companion object{
-        fun newInstance(books : ArrayList<Book>): FragmentList{
+        fun newInstance(dataset : ArrayList<Book>): FragmentList{
             val newFragment = FragmentList()
-            newFragment.booksList = books
+            newFragment.booksList = dataset
             return newFragment
         }
     }
@@ -38,7 +39,7 @@ class FragmentList  : Fragment(){
 
         val view = inflater.inflate(R.layout.content_main, container,false)
 
-        //savedInstance
+        //if(savedInstanceState != null) booksList = savedInstanceState.getParcelableArrayList<Book>(AppConstants.MAIN_LIST_KEY)
 
         initRecyclerView(resources.configuration.orientation, view)
 
