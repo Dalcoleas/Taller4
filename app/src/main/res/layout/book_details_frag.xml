@@ -5,16 +5,18 @@
               android:layout_height="match_parent"
               android:gravity="center">
 
-    <ImageView android:layout_width="match_parent"
+    <ImageView
+            android:id="@+id/image_frag"
+            android:layout_width="match_parent"
                android:layout_height="wrap_content"
                android:layout_weight="1"/>
 
-    <TextView android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_weight="0.1"/>
-
-    <TextView android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_weight="0.5"/>
+    <TextView
+            android:gravity="center"
+            android:id="@+id/title_frag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="N/A"/>
 
 </LinearLayout>
