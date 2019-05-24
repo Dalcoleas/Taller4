@@ -1,12 +1,13 @@
 package com.example.taller4.database.daos
 
+import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.taller4.database.entities.BookXTag
 import com.example.taller4.database.entities.Tag
 
-
+@Dao
 interface BookXTagDao {
 
     @Query("SELECT * FROM tags INNER JOIN bookxtags ON tags.id = idTag WHERE :bookId = idBook")
