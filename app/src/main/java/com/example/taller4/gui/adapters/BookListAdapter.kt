@@ -21,8 +21,8 @@ class BookListAdapter (var books: ArrayList<Book> , val clickListener: (Book) ->
 
     override fun onBindViewHolder(holder: BookViewHolder, position: Int) = holder.bind(books[position], clickListener)
 
-    override fun changeDataSet(books: ArrayList<Book>) {
-        this.books = books
+    override fun changeDataSet(newDataSet: ArrayList<Book>) {
+        this.books = newDataSet
         notifyDataSetChanged()
     }
 

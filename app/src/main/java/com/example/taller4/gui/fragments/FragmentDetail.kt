@@ -13,10 +13,7 @@ import kotlinx.android.synthetic.main.book_details_frag.view.*
 
 class FragmentDetail() : Fragment(){
 
-    var authors : List<Author> = emptyList()
-    var tags : List<Tag> = emptyList()
-
-    var book = Book(0,"N/A",0,"N/A","N/A","N/A",0, authors, tags)
+    var book = Book(0,"N/A",0,"N/A","N/A","N/A",0)
 
     companion object{
         fun newInstance (book:Book) : FragmentDetail{

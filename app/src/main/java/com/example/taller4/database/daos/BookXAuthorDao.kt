@@ -1,5 +1,6 @@
 package com.example.taller4.database.daos
 
+import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
@@ -7,6 +8,7 @@ import com.example.taller4.database.entities.Author
 import com.example.taller4.database.entities.BookXAuthor
 import com.example.taller4.database.entities.Publisher
 
+@Dao
 interface BookXAuthorDao {
 
     @Query("SELECT * FROM authors INNER JOIN bookxauthors ON authors.id = idAuthor WHERE :bookId = idBook")
