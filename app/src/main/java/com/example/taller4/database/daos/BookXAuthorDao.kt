@@ -15,6 +15,10 @@ interface BookXAuthorDao {
     @Query("SELECT * FROM bookxauthors")
     fun getBookXAuthorId():List<BookXAuthor>
 
+    //obtener libros con authores que coincidan con la busqueda (nombre o apellido)
+    @Query("SELECT * FROM authors INNER JOIN bookxauthors ON authors.id = idAuthor WHERE author_last_name Like :search or author_name like :search")
+    fun findByAuthor(search : String):List<BookXAuthor>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)//cuando hay conficto con los datos por ejemplo mismo id... en este caso reemplaza
     suspend fun insert(bookXAuthor: BookXAuthor)//supend para ser llamado por otra funcion supend o una corrutina
 

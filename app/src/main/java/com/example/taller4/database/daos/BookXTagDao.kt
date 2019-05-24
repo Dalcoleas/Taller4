@@ -15,6 +15,10 @@ interface BookXTagDao {
     @Query("SELECT * FROM BookXTags")
     fun getBookXtagId():List<BookXTag>
 
+    //obtener lista de tags que coincidan
+    @Query("SELECT * FROM tags INNER JOIN bookxtags ON tags.id = idTag WHERE tag_name like :search")
+    fun finndByTag(search : String):List<BookXTag>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)//cuando hay conficto con los datos por ejemplo mismo id... en este caso reemplaza
     suspend fun insert(bookXtag: BookXTag)//supend para ser llamado por otra funcion supend o una corrutina
 

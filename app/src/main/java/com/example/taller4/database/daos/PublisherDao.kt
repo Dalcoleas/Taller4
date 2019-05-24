@@ -14,6 +14,10 @@ interface PublisherDao {
     @Query("SELECT*FROM publishers")
     fun getAll(): LiveData<List<Publisher>>
 
+    //obtener publicadores en base al nombre
+    @Query("SELECT*FROM publishers WHERE publisher_name like :search")
+    fun findByTag (search : String): LiveData<List<Publisher>>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)//cuando hay conficto con los datos por ejemplo mismo id... en este caso reemplaza
     suspend fun insert(publisher: Publisher)//supend para ser llamado por otra funcion supend o una corrutina
 
