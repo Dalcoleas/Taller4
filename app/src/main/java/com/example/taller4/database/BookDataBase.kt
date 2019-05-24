@@ -60,7 +60,13 @@ public abstract class BookDataBase: RoomDatabase(){
                 // comment out the following line.
                 INSTANCE?.let { database ->
                     scope.launch(Dispatchers.IO) {
+                        populateDatabase(database.authorDao())
+                        populateDatabase(database.publisherDao())
+                        populateDatabase(database.tagDao())
                         populateDatabase(database.bookDao())
+                        populateDatabase(database.bookXAuthorDao())
+                        populateDatabase(database.bookXTagDao())
+
                     }
                 }
             }
@@ -75,6 +81,65 @@ public abstract class BookDataBase: RoomDatabase(){
             bookDao.insert(book)
             book = Book("myBook2",4,"aszssndjad3","mi resumen del libro 2","algunaImagen.png",2)
             bookDao.insert(book)
+        }
+
+        suspend fun populateDatabase(tagDao: TagDao) {
+            // Start the app with a clean database every time.
+            // Not needed if you only populate on creation.
+            tagDao.nukeTable()
+
+            var tag = Tag("my tag mindjns as")
+            tagDao.insert(tag)
+            tag = Tag("aszssndjad3")
+            tagDao.insert(tag)
+        }
+
+        suspend fun populateDatabase(publisherDao: PublisherDao) {
+            // Start the app with a clean database every time.
+            // Not needed if you only populate on creation.
+            publisherDao.nukeTable()
+
+            var publisher = Publisher("trujillo´s ;v")
+            publisherDao.insert(publisher)
+            publisher = Publisher("publisher_aszssndjad3")
+            publisherDao.insert(publisher)
+        }
+
+        suspend fun populateDatabase(authorDao: AuthorDao) {
+            // Start the app with a clean database every time.
+            // Not needed if you only populate on creation.
+            authorDao.nukeTable()
+
+            var author = Author("eromanga","sensei")
+            authorDao.insert(author)
+            author = Author("mio","tachibana")
+            authorDao.insert(author)
+        }
+
+        suspend fun populateDatabase(bookXAuthorDao: BookXAuthorDao) {
+            // Start the app with a clean database every time.
+            // Not needed if you only populate on creation.
+            bookXAuthorDao.nukeTable()
+
+            var bookXAuthor = BookXAuthor(1,1)
+            bookXAuthorDao.insert(bookXAuthor)
+            bookXAuthor = BookXAuthor(2,1)
+            bookXAuthorDao.insert(bookXAuthor)
+            bookXAuthor = BookXAuthor(2,2)
+            bookXAuthorDao.insert(bookXAuthor)
+        }
+
+        suspend fun populateDatabase(bookXTagDao: BookXTagDao) {
+            // Start the app with a clean database every time.
+            // Not needed if you only populate on creation.
+            bookXTagDao.nukeTable()
+
+            var bookTag = BookXTag(1,1)
+            bookXTagDao.insert(bookTag)
+            bookTag = BookXTag(2,1)
+            bookXTagDao.insert(bookTag)
+            bookTag = BookXTag(2,2)
+            bookXTagDao.insert(bookTag)
         }
     }
 
