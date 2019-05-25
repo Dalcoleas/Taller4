@@ -40,7 +40,7 @@ class BookListAdapter (var books: List<BookDTO> , val clickListener: (BookDTO) -
             tv_title_book.text = book.title
             Glide.with(itemView.context).load(book.cover).into(itemView.img_book)
 
-            this.setOnClickListener { clickListener(book) }
+            itemView.setOnClickListener { clickListener(book) }
         }
     }
 }

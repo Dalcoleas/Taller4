@@ -1,5 +1,6 @@
 package com.example.taller4.gui.activities
 
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.os.PersistableBundle
@@ -48,6 +49,8 @@ class MainActivity : AppCompatActivity(),  FragmentList.ListenerTools{
     }
 
     override fun PortraitClick(book: BookDTO) {
+        val intent = Intent(this@MainActivity, BookInfoActivity::class.java)
+        startActivityForResult(intent, newBookActivityRequestCode)
     }
 
     override fun LandscapeClick(book: BookDTO) {
@@ -60,5 +63,9 @@ class MainActivity : AppCompatActivity(),  FragmentList.ListenerTools{
     private fun showContent(placeholder : Int, book : Book){
         detFrag = FragmentDetail.newInstance(book)
         changeFragment(placeholder, detFrag)
+    }
+
+    companion object{
+        const val newBookActivityRequestCode = 1
     }
 }

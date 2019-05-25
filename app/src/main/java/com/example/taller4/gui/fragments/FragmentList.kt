@@ -1,5 +1,6 @@
 package com.example.taller4.gui.fragments
 
+import android.content.Context
 import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
@@ -97,5 +98,14 @@ class FragmentList  : Fragment(){
     override fun onDetach() {
         super.onDetach()
         listenerTools = null
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is ListenerTools) {
+            listenerTools = context
+        } else {
+            throw RuntimeException("Se necesita una implementación de la interfaz")
+        }
     }
 }
