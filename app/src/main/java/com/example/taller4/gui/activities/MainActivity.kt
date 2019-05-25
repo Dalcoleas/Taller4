@@ -39,13 +39,14 @@ class MainActivity : AppCompatActivity(),  FragmentList.ListenerTools{
     fun initMainFragment(){
 
         mainFrag = FragmentList()
+        detFrag = FragmentDetail()
 
         if(resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
             resource = R.id.main_fragment
         }
         if(resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            showContent(R.id.land_main_cont_fragment, Book("N/A",1,"N/A","N/A","N/a",1))
             resource = R.id.land_main_fragment
+            changeFragment(R.id.land_main_cont_fragment, detFrag)
         }
 
         changeFragment(resource, mainFrag)
@@ -59,22 +60,19 @@ class MainActivity : AppCompatActivity(),  FragmentList.ListenerTools{
         intent.putExtra("last",book.authors[0].author_last_name)
         intent.putExtra("img", book.cover)
         Log.d("summary", book.toString())
-        startActivityForResult(intent, newBookActivityRequestCode)
+        startActivity(intent)
     }
 
     override fun LandscapeClick(book: BookDTO) {
+        detFrag = FragmentDetail.newInstance(book)
+        changeFragment(R.id.land_main_cont_fragment, detFrag)
     }
 
     private fun changeFragment(id: Int, fragment: Fragment){
         supportFragmentManager.beginTransaction().replace(id,fragment).commit()
     }
 
-    private fun showContent(placeholder : Int, book : Book){
-        detFrag = FragmentDetail.newInstance(book)
-        changeFragment(placeholder, detFrag)
-    }
-
-    companion object{
+    /*companion object{
         const val newBookActivityRequestCode = 1
-    }
+    }*/
 }

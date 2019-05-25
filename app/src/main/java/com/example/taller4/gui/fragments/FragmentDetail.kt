@@ -6,18 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 import com.example.taller4.R
 import com.example.taller4.database.entities.Author
 import com.example.taller4.database.entities.Book
 import com.example.taller4.database.entities.Tag
+import com.example.taller4.gui.dtos.BookDTO
 import kotlinx.android.synthetic.main.book_details_frag.view.*
 
 class FragmentDetail() : Fragment(){
 
-    var book = Book("N/A",0,"N/A","N/A","N/A", 1)
+    var book = BookDTO(0,"N/A", 0, "N/A", "N/A","N/A")
 
     companion object{
-        fun newInstance (dataset : Book) : FragmentDetail{
+        fun newInstance (dataset : BookDTO) : FragmentDetail{
             return FragmentDetail().apply {
                 book = dataset
             }
@@ -35,7 +37,8 @@ class FragmentDetail() : Fragment(){
     }
 
     fun bind(view: View){
-        //view.image_frag -> poner imagen
-        view.title_frag.text = book.title
+
+        view.name_frag.text = book.title
+        Glide.with(view.context).load(book.cover).into(view.img_frag)
     }
 }
