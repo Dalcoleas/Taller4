@@ -47,10 +47,10 @@ class MainActivity : AppCompatActivity(),  FragmentList.ListenerTools{
         changeFragment(resource, mainFrag)
     }
 
-    override fun PortraitClick(book: Book) {
+    override fun PortraitClick(book: BookDTO) {
     }
 
-    override fun LandscapeClick(book: Book) {
+    override fun LandscapeClick(book: BookDTO) {
     }
 
     private fun changeFragment(id: Int, fragment: Fragment){

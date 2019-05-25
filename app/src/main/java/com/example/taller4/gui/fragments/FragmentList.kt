@@ -27,8 +27,8 @@ class FragmentList  : Fragment(){
 
 
     interface ListenerTools{
-        fun PortraitClick(book: Book)
-        fun LandscapeClick(book: Book)
+        fun PortraitClick(book: BookDTO)
+        fun LandscapeClick(book: BookDTO)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -48,14 +48,14 @@ class FragmentList  : Fragment(){
         val recyclerView = container.recyclerview_books
 
         if(orientation == Configuration.ORIENTATION_PORTRAIT){
-            bookAdapter = BookListAdapter(books = booksList, clickListener = {book: Book ->  listenerTools?.PortraitClick(book)})
+            bookAdapter = BookListAdapter(books = booksList, clickListener = {book: BookDTO ->  listenerTools?.PortraitClick(book)})
             recyclerView.apply {
                 adapter = bookAdapter
                 setHasFixedSize(true)
                 layoutManager = gridLayoutManager
             }
         } else{
-            bookAdapter = BookListAdapter(books = booksList, clickListener = {book: Book ->   listenerTools?.LandscapeClick(book)})
+            bookAdapter = BookListAdapter(books = booksList, clickListener = {book: BookDTO ->   listenerTools?.LandscapeClick(book)})
             recyclerView.apply {
                 adapter = bookAdapter
                 setHasFixedSize(true)
