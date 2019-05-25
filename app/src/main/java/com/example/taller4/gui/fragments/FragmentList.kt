@@ -2,6 +2,7 @@ package com.example.taller4.gui.fragments
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.taller4.R
 import com.example.taller4.gui.adapters.BookListAdapter
 import com.example.taller4.database.entities.Book
+import com.example.taller4.gui.dtos.BookDTO
 //import com.example.taller4.gui.utilities.AppConstants
 import com.example.taller4.gui.utilities.MyAdapter
 import com.example.taller4.viewmodels.BookViewModel
@@ -21,13 +23,13 @@ import kotlinx.android.synthetic.main.content_main.view.*
 
 class FragmentList  : Fragment(){
     private lateinit var viewModel: BookViewModel
-    private lateinit var booksList : ArrayList<Book>
+    private lateinit var booksList : ArrayList<BookDTO>
     private lateinit var bookAdapter : BookListAdapter
     var listenerTools : ListenerTools? = null
 
 
     companion object{
-        fun newInstance(dataset : ArrayList<Book>): FragmentList{
+        fun newInstance(dataset : ArrayList<BookDTO>): FragmentList{
             val newFragment = FragmentList()
             newFragment.booksList = dataset
             return newFragment
@@ -75,12 +77,36 @@ class FragmentList  : Fragment(){
             }
         }
         viewModel = ViewModelProviders.of(this).get(BookViewModel::class.java)
+
+        var dtos  : List<BookDTO>
+
         viewModel.getAllBooks().observe(this, Observer { books->
-            books?.let { bookAdapter.changeDataSet(it) }
+            books?.let {
+                var a :ArrayList<BookDTO> = ArrayList<BookDTO>()
+                Log.i("BOOKTABLE",viewModel.getAllBooks().value.toString())
+                viewModel.getAllBooks().value?.forEach{
+
+                    var d = BookDTO(it.id,it.title,it.edition,it.cover,it.isbn,it.summary)
+
+                    viewModel.authors(it.id).observe(this, Observer {  authors->
+                        authors.let {
+                            Log.i("MATERRACE", "ds")
+                            d.authors = authors
+                            a.add(d)
+                            dtos = a
+                            bookAdapter.changeDataSet(dtos)
+                        }
+                    })
+
+
+                }
+
+
+            }
         })
     }
 
-    fun updateBooks(books : ArrayList<Book>){
+    fun updateBooks(books : ArrayList<BookDTO>){
         bookAdapter.changeDataSet(books)
     }
 

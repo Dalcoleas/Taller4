@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.example.taller4.R
 import com.example.taller4.database.BookDataBase
 import com.example.taller4.database.entities.Book
+import com.example.taller4.gui.dtos.BookDTO
 import com.example.taller4.gui.fragments.FragmentDetail
 import com.example.taller4.gui.fragments.FragmentList
 import com.example.taller4.gui.utilities.AppConstants
@@ -16,7 +17,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(),  FragmentList.ListenerTools{
 
-    private var booksList = ArrayList<Book>()
+    private var booksList = ArrayList<BookDTO>()
     //private lateinit var var bookViewModel: BookViewModel
     private lateinit var mainFrag : FragmentList
     private lateinit var detFrag : FragmentDetail
@@ -59,7 +60,7 @@ class MainActivity : AppCompatActivity(),  FragmentList.ListenerTools{
     override fun LandscapeClick(book: Book) {
     }
 
-    fun updateBooks(bookList : ArrayList<Book>){
+    fun updateBooks(bookList : ArrayList<BookDTO>){
         mainFrag.updateBooks(bookList)
     }
 

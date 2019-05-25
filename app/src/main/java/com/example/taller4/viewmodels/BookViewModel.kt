@@ -8,10 +8,12 @@ package com.example.taller4.viewmodels
 //import com.example.taller4.database.entities.Book
 //import com.example.taller4.database.entities.Publisher
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
 import com.example.taller4.database.BookDataBase
+import com.example.taller4.database.entities.Author
 import com.example.taller4.database.entities.Book
 import com.example.taller4.database.entities.Tag
 import com.example.taller4.repositories.BookRepository
@@ -24,10 +26,13 @@ class BookViewModel(
 
     private val repository: BookRepository
 
+
     init {
         val bookDao = BookDataBase.getInstance(app,viewModelScope).bookDao()
 
         repository = BookRepository(bookDao)
+
+
     }
 
     /** Bloque de Book **/
@@ -39,9 +44,11 @@ class BookViewModel(
 
     /** Bloque de funciones de búsqueda de libros**/
     /** Obtener todos los libros **/
-    fun getAllBooks(): LiveData<List<Book>> =
-        repository.allBooks
-//
+    fun getAllBooks(): LiveData<List<Book>> {
+
+        Log.i("BOOKTABLE",repository.allBooks.value.toString())
+        return repository.allBooks}
+
 //    /** Buscar libro según id **/
 //    fun getBook(id: Int): LiveData<Book> =
 //      //  repository.(id)
@@ -49,6 +56,12 @@ class BookViewModel(
     /** Buscar libro según título **/
     fun searchBookByTitle(title: String): LiveData<List<Book>> =
         repository.allBooks
+
+    fun authors(bookid: Int): LiveData<List<Author>> {
+        return repository.authors(bookid)
+    }
+
+
 
 //    /** Buscar libro según Author **/
 //    fun searchBookByAuthor(author: String): LiveData<List<Book>> =

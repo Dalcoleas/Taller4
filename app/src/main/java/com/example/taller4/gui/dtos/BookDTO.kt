@@ -13,6 +13,9 @@ data class BookDTO(
     val cover: String
 ) {
     lateinit var publisher: Publisher
-    lateinit var authors: List<Author>
+       var authors: List<Author>
     lateinit var tags: List<Tag>
+    init {
+        authors = emptyList()
+    }
 }
