@@ -10,8 +10,9 @@ data class BookDTO(
     val edition: Int,
     val isbn: String,
     val summary: String,
-    val cover: String,
-    val publisher: Publisher,
-    val authors: List<Author>,
-    val tags: List<Tag>
-)
+    val cover: String
+) {
+    lateinit var publisher: Publisher
+    lateinit var authors: List<Author>
+    lateinit var tags: List<Tag>
+}

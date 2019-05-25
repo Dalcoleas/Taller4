@@ -7,42 +7,49 @@ package com.example.taller4.viewmodels
 //import com.example.taller4.database.entities.Author
 //import com.example.taller4.database.entities.Book
 //import com.example.taller4.database.entities.Publisher
-//import com.example.taller4.database.entities.Tag
-//import kotlinx.coroutines.Dispatchers
-//import kotlinx.coroutines.launch
-//
-//class BookViewModel(
-//    app: Application
-//) : AndroidViewModel(app) {
-//
-//    private val repository: BookRepository
-//
-//    init {
-//        val bookDao = BookRoomDatabase.getInstance(app).BookDao()
-//
-//        repository = BookRepository(bookDao)
-//    }
-//
-//    /** Bloque de Book **/
-//    fun insert(book: Book) =
-//        viewModelScope.launch(Dispatchers.IO)
-//        {
-//            repository.insert(book)
-//        }
-//
-//    /** Bloque de funciones de búsqueda de libros**/
-//    /** Obtener todos los libros **/
-//    fun getAllBooks(): LiveData<List<Book>> =
-//        repository.getAllBooks()
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.viewModelScope
+import com.example.taller4.database.BookDataBase
+import com.example.taller4.database.entities.Book
+import com.example.taller4.database.entities.Tag
+import com.example.taller4.repositories.BookRepository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+
+class BookViewModel(
+    app: Application
+) : AndroidViewModel(app) {
+
+    private val repository: BookRepository
+
+    init {
+        val bookDao = BookDataBase.getInstance(app,viewModelScope).bookDao()
+
+        repository = BookRepository(bookDao)
+    }
+
+    /** Bloque de Book **/
+    fun insert(book: Book) =
+        viewModelScope.launch(Dispatchers.IO)
+        {
+            repository.insert(book)
+        }
+
+    /** Bloque de funciones de búsqueda de libros**/
+    /** Obtener todos los libros **/
+    fun getAllBooks(): LiveData<List<Book>> =
+        repository.allBooks
 //
 //    /** Buscar libro según id **/
 //    fun getBook(id: Int): LiveData<Book> =
-//        repository.getBook(id)
-//
-//    /** Buscar libro según título **/
-//    fun searchBookByTitle(title: String): LiveData<List<Book>> =
-//        repository.searchByTitle(title)
-//
+//      //  repository.(id)
+
+    /** Buscar libro según título **/
+    fun searchBookByTitle(title: String): LiveData<List<Book>> =
+        repository.allBooks
+
 //    /** Buscar libro según Author **/
 //    fun searchBookByAuthor(author: String): LiveData<List<Book>> =
 //        repository.searchByAuthor(author)
@@ -84,7 +91,7 @@ package com.example.taller4.viewmodels
 //        {
 //            repository.insert(tag)
 //        }
-//
+
 //    /** Obtener todas las tags **/
 //    fun getAllTags(): LiveData<List<Tag>> = repository.getAllTags()
 //
@@ -100,7 +107,7 @@ package com.example.taller4.viewmodels
 //        {
 //            repository.insert(publisher)
 //        }
-//
+
 //    /** Obtener todas las casas editoras **/
 //    fun getAllPublishers(): LiveData<List<Publisher>> = repository.getAllPulishers()
 //
@@ -108,4 +115,4 @@ package com.example.taller4.viewmodels
 //    fun getPublisher(id: Int): LiveData<Publisher> =
 //        repository.getPublisher(id)
 //    /** Fin de bloque de Publisher **/
-//}
+}

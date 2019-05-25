@@ -6,24 +6,30 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.taller4.R
 import com.example.taller4.gui.adapters.BookListAdapter
 import com.example.taller4.database.entities.Book
+//import com.example.taller4.gui.utilities.AppConstants
 import com.example.taller4.gui.utilities.MyAdapter
+import com.example.taller4.viewmodels.BookViewModel
 import kotlinx.android.synthetic.main.content_main.view.*
 
 class FragmentList  : Fragment(){
-
+    private lateinit var viewModel: BookViewModel
     private lateinit var booksList : ArrayList<Book>
-    private lateinit var bookAdapter : MyAdapter
+    private lateinit var bookAdapter : BookListAdapter
     var listenerTools : ListenerTools? = null
 
+
     companion object{
-        fun newInstance(books : ArrayList<Book>): FragmentList{
+        fun newInstance(dataset : ArrayList<Book>): FragmentList{
             val newFragment = FragmentList()
-            newFragment.booksList = books
+            newFragment.booksList = dataset
             return newFragment
         }
     }
@@ -38,9 +44,10 @@ class FragmentList  : Fragment(){
 
         val view = inflater.inflate(R.layout.content_main, container,false)
 
-        //savedInstance
+        //if(savedInstanceState != null) booksList = savedInstanceState.getParcelableArrayList<Book>(AppConstants.MAIN_LIST_KEY)
 
         initRecyclerView(resources.configuration.orientation, view)
+
 
         return view
     }
@@ -67,6 +74,10 @@ class FragmentList  : Fragment(){
                 layoutManager = linearLayoutManager
             }
         }
+        viewModel = ViewModelProviders.of(this).get(BookViewModel::class.java)
+        viewModel.getAllBooks().observe(this, Observer { books->
+            books?.let { bookAdapter.changeDataSet(it) }
+        })
     }
 
     fun updateBooks(books : ArrayList<Book>){
