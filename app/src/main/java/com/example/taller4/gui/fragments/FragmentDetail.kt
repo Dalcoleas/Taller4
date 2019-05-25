@@ -1,6 +1,7 @@
 package com.example.taller4.gui.fragments
 
 import android.os.Bundle
+import android.service.autofill.Dataset
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,10 +17,10 @@ class FragmentDetail() : Fragment(){
     var book = Book("N/A",0,"N/A","N/A","N/A", 1)
 
     companion object{
-        fun newInstance (book:Book) : FragmentDetail{
-            val newFragment = FragmentDetail()
-            newFragment.book = book
-            return newFragment
+        fun newInstance (dataset : Book) : FragmentDetail{
+            return FragmentDetail().apply {
+                book = dataset
+            }
         }
     }
 

@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,25 +15,16 @@ import com.example.taller4.R
 import com.example.taller4.gui.adapters.BookListAdapter
 import com.example.taller4.database.entities.Book
 import com.example.taller4.gui.dtos.BookDTO
-//import com.example.taller4.gui.utilities.AppConstants
-import com.example.taller4.gui.utilities.MyAdapter
 import com.example.taller4.viewmodels.BookViewModel
 import kotlinx.android.synthetic.main.content_main.view.*
 
 class FragmentList  : Fragment(){
+
     private lateinit var viewModel: BookViewModel
-    private lateinit var booksList : ArrayList<BookDTO>
+    private val booksList = ArrayList<BookDTO>()
     private lateinit var bookAdapter : BookListAdapter
     var listenerTools : ListenerTools? = null
 
-
-    companion object{
-        fun newInstance(dataset : ArrayList<BookDTO>): FragmentList{
-            val newFragment = FragmentList()
-            newFragment.booksList = dataset
-            return newFragment
-        }
-    }
 
     interface ListenerTools{
         fun PortraitClick(book: Book)
@@ -46,8 +36,6 @@ class FragmentList  : Fragment(){
 
         val view = inflater.inflate(R.layout.content_main, container,false)
 
-        //if(savedInstanceState != null) booksList = savedInstanceState.getParcelableArrayList<Book>(AppConstants.MAIN_LIST_KEY)
-
         initRecyclerView(resources.configuration.orientation, view)
 
 
@@ -57,25 +45,25 @@ class FragmentList  : Fragment(){
     fun initRecyclerView(orientation: Int, container: View){
         val gridLayoutManager = GridLayoutManager(this.context,2)
         val linearLayoutManager = LinearLayoutManager(this.context)
+        val recyclerView = container.recyclerview_books
 
-        if(orientation==Configuration.ORIENTATION_PORTRAIT){
-            bookAdapter = BookListAdapter(booksList,{book:Book -> listenerTools?.PortraitClick(book)})
-            container.recyclerview_books.adapter = bookAdapter as BookListAdapter
-
-            container.recyclerview_books.apply {
+        if(orientation == Configuration.ORIENTATION_PORTRAIT){
+            bookAdapter = BookListAdapter(books = booksList, clickListener = {book: Book ->  listenerTools?.PortraitClick(book)})
+            recyclerView.apply {
+                adapter = bookAdapter
                 setHasFixedSize(true)
                 layoutManager = gridLayoutManager
             }
-        }
-        if(orientation==Configuration.ORIENTATION_LANDSCAPE){
-            bookAdapter = BookListAdapter(booksList, {book : Book -> listenerTools?.LandscapeClick(book)})
-            container.recyclerview_books.adapter = bookAdapter as BookListAdapter
-
-            container.recyclerview_books.apply {
+        } else{
+            bookAdapter = BookListAdapter(books = booksList, clickListener = {book: Book ->   listenerTools?.LandscapeClick(book)})
+            recyclerView.apply {
+                adapter = bookAdapter
                 setHasFixedSize(true)
                 layoutManager = linearLayoutManager
             }
+
         }
+
         viewModel = ViewModelProviders.of(this).get(BookViewModel::class.java)
 
         var dtos  : List<BookDTO>
@@ -101,17 +89,9 @@ class FragmentList  : Fragment(){
 
                 }
 
-
             }
         })
-    }
 
-    fun updateBooks(books : ArrayList<BookDTO>){
-        bookAdapter.changeDataSet(books)
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
     }
 
     override fun onDetach() {

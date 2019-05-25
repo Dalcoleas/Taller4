@@ -13,14 +13,15 @@ import com.example.taller4.gui.dtos.BookDTO
 import com.example.taller4.gui.fragments.FragmentDetail
 import com.example.taller4.gui.fragments.FragmentList
 import com.example.taller4.gui.utilities.AppConstants
+import com.example.taller4.viewmodels.BookViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(),  FragmentList.ListenerTools{
 
     private var booksList = ArrayList<BookDTO>()
-    //private lateinit var var bookViewModel: BookViewModel
     private lateinit var mainFrag : FragmentList
     private lateinit var detFrag : FragmentDetail
+    private var resource = 0
 
     lateinit var database : BookDataBase
 
@@ -31,24 +32,16 @@ class MainActivity : AppCompatActivity(),  FragmentList.ListenerTools{
         initMainFragment()
     }
 
-    /*override fun onSaveInstanceState(outState: Bundle) {
-        outState.putParcelableArrayList(AppConstants.dataset_saveinstance_key,booksList)
-        super.onSaveInstanceState(outState)
-    }*/
-
     fun initMainFragment(){
-        //bookViewModel = ViewModelProviders.of(this).get()
 
-        mainFrag = FragmentList.newInstance(booksList)
+        mainFrag = FragmentList()
 
-        val resource = if(resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT)
-            R.id.main_fragment
-        else{
-            detFrag = FragmentDetail.newInstance(Book("N/A",0,"N/A","N/A","N/A",0))
-
-            changeFragment(R.id.land_main_cont_fragment, detFrag)
-
-            R.id.land_main_fragment
+        if(resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            resource = R.id.main_fragment
+        }
+        if(resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            showContent(R.id.land_main_cont_fragment, Book("N/A",1,"N/A","N/A","N/a",1))
+            resource = R.id.land_main_fragment
         }
 
         changeFragment(resource, mainFrag)
@@ -60,11 +53,12 @@ class MainActivity : AppCompatActivity(),  FragmentList.ListenerTools{
     override fun LandscapeClick(book: Book) {
     }
 
-    fun updateBooks(bookList : ArrayList<BookDTO>){
-        mainFrag.updateBooks(bookList)
-    }
-
     private fun changeFragment(id: Int, fragment: Fragment){
         supportFragmentManager.beginTransaction().replace(id,fragment).commit()
+    }
+
+    private fun showContent(placeholder : Int, book : Book){
+        detFrag = FragmentDetail.newInstance(book)
+        changeFragment(placeholder, detFrag)
     }
 }

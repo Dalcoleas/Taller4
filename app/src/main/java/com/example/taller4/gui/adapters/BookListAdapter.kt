@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.taller4.R
 import com.example.taller4.database.entities.Author
 import com.example.taller4.database.entities.Book
@@ -36,12 +37,10 @@ class BookListAdapter (var books: List<BookDTO> , val clickListener: (Book) -> U
 
     class BookViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(book: BookDTO, clickListener: (Book) -> Unit) = with(itemView) {
-            //img_book -> setear imagen
-           // val e : List<Author> = emptyList()
-          //  if(book.authors !=e ){
-         //       Log.i("HOLLLLA","hola")
-        //    }
-            tv_title_book.text = book.authors.get(0).author_name
+            tv_title_book.text = book.title
+            Glide.with(itemView.context).load(book.cover).into(itemView.img_book)
+
+            this.setOnClickListener { clickListener }
         }
     }
 }
