@@ -75,7 +75,7 @@ class FragmentList  : Fragment(){
                 Log.i("BOOKTABLE",viewModel.getAllBooks().value.toString())
                 viewModel.getAllBooks().value?.forEach{
 
-                    var d = BookDTO(it.id,it.title,it.edition,it.cover,it.isbn,it.summary)
+                    var d = BookDTO(it.id,it.title,it.edition,it.isbn,it.summary,it.cover)
 
                     viewModel.authors(it.id).observe(this, Observer {  authors->
                         authors.let {
