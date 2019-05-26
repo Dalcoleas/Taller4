@@ -101,7 +101,7 @@ public abstract class BookDataBase: RoomDatabase(){
                         " Porque los dos adolescentes de Verona, que reavivan el odio entre las familias Montesco y Capuleto " +
                         "y subvierten el orden de la ciudad de Mantua, corporizan la pasión por excelencia; " +
                         "aquélla que desatiende consejos y órdenes públicos y quiere moldear el mundo a la medida de sus deseos.",
-                "http://www.plutonediciones.com/tienda/wp-content/uploads/2016/12/hamlet-romeo-y-julieta-.jpg",
+                "https://pictures.abebooks.com/isbn/9788483434086-es.jpg",
                 7
             )
             bookDao.insert(book) // Libro 2
