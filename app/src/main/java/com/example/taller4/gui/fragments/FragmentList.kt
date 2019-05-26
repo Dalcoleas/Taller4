@@ -83,7 +83,7 @@ class FragmentList  : Fragment(){
                             Log.i("MATERRACE", "ds")
                          //   d.authors = authors
                             a.forEach{
-                                if (it.isbn == d.isbn){
+                                if (it.id== d.id){
                                     it.authors = authors
                                 }
                             }
@@ -97,7 +97,7 @@ class FragmentList  : Fragment(){
                             Log.i("MATERRACE", "ds")
                            // d.publisher = authors
                             a.forEach{
-                                if (it.isbn == d.isbn){
+                                if (it.id == d.id){
                                   //  it.publisher= publisher
                                 }
                             }
@@ -111,8 +111,9 @@ class FragmentList  : Fragment(){
                             Log.i("MATERRACE", "ds")
                             d.tags = tags
                             a.forEach{
-                                if (it.isbn == d.isbn){
+                                if (it.id == d.id){
                                     it.tags= tags
+
                                 }
                             }
                             dtos = a
