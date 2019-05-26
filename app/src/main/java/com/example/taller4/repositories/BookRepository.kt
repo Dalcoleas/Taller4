@@ -5,6 +5,8 @@ import androidx.lifecycle.LiveData
 import com.example.taller4.database.daos.BookDao
 import com.example.taller4.database.entities.Author
 import com.example.taller4.database.entities.Book
+import com.example.taller4.database.entities.Publisher
+import com.example.taller4.database.entities.Tag
 
 class BookRepository(private val bookDao : BookDao){
 
@@ -35,6 +37,11 @@ class BookRepository(private val bookDao : BookDao){
     @WorkerThread
     fun authors(bookid : Int) : LiveData<List<Author>> =
         bookDao.getAuthors(bookid)
+    @WorkerThread
+    fun tags(bookid : Int) : LiveData<List<Tag>> =
+        bookDao.getTag(bookid)
+    fun publishers(bookid : Int) : LiveData<Publisher> =
+        bookDao.getPublisher(bookid)
 
 
 }

@@ -82,11 +82,17 @@ class FragmentList  : Fragment(){
                         authors.let {
                             Log.i("MATERRACE", "ds")
                             d.authors = authors
-                            a.add(d)
+                            a.forEach{
+                                if (it.isbn == d.isbn){
+                                    it.authors = authors
+                                }
+                            }
                             dtos = a
                             BookAdapter.changeDataSet(dtos)
                         }
                     })
+
+                    a.add(d)
 
 
                 }

@@ -53,6 +53,13 @@ class BookViewModel(
     fun authors(bookid: Int): LiveData<List<Author>> {
         return repository.authors(bookid)
     }
+    fun tags(bookid: Int): LiveData<List<Tag>> {
+        return repository.tags(bookid)
+    }
+
+    fun publisher(bookid: Int): LiveData<Publisher> {
+        return repository.publishers(bookid)
+    }
 
 //    /** Buscar libro según Author **/
 //    fun searchBookByAuthor(author: String): LiveData<List<Book>> =

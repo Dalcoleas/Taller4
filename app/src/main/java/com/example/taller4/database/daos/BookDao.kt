@@ -7,6 +7,8 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.taller4.database.entities.Author
 import com.example.taller4.database.entities.Book
+import com.example.taller4.database.entities.Publisher
+import com.example.taller4.database.entities.Tag
 
 
 @Dao
@@ -41,5 +43,9 @@ interface BookDao {
     fun getAllFull():LiveData<List<Book>>
     @Query("SELECT * FROM authors INNER JOIN bookxauthors ON authors.id = idAuthor WHERE :bookId = idBook")
     fun getAuthors(bookId: Int):LiveData<List<Author>>
+    @Query("SELECT * FROM tags INNER JOIN bookxtags ON tags.id = idTag WHERE :bookId = idBook")
+    fun getTag(bookId: Int):LiveData<List<Tag>>
+    @Query("SELECT * FROM publishers INNER JOIN books ON publishers.id = books.id WHERE :bookId = books.id")
+    fun getPublisher(bookId: Int):LiveData<Publisher>
 
 }
