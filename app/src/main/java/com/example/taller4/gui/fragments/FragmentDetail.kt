@@ -16,7 +16,7 @@ import kotlinx.android.synthetic.main.book_details_frag.view.*
 
 class FragmentDetail() : Fragment(){
 
-    var book = BookDTO(0,"N/A", 0, "N/A", "N/A","N/A")
+    var book = BookDTO(0," ", 0, "N/A", "N/A","N/A")
 
     companion object{
         fun newInstance (dataset : BookDTO) : FragmentDetail{
