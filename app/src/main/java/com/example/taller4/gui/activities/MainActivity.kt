@@ -11,6 +11,7 @@ import com.example.taller4.database.BookDataBase
 import com.example.taller4.gui.dtos.BookDTO
 import com.example.taller4.gui.fragments.FragmentDetail
 import com.example.taller4.gui.fragments.FragmentList
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity(),  FragmentList.ListenerTools{
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity(),  FragmentList.ListenerTools{
         setContentView(R.layout.activity_main)
 
         initMainFragment()
+
     }
 
     fun initMainFragment(){
@@ -35,11 +37,17 @@ class MainActivity : AppCompatActivity(),  FragmentList.ListenerTools{
 
         if(resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT) {
             resource = R.id.main_fragment
+
+            bt_add_activity.setOnClickListener{
+                val intent = Intent(this@MainActivity, NewBookActivity::class.java)
+                startActivityForResult(intent, newBookActivityRequestCode)
+            }
         }
         if(resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             resource = R.id.land_main_fragment
             changeFragment(R.id.land_main_cont_fragment, detFrag)
         }
+
 
         changeFragment(resource, mainFrag)
     }
@@ -64,7 +72,7 @@ class MainActivity : AppCompatActivity(),  FragmentList.ListenerTools{
         supportFragmentManager.beginTransaction().replace(id,fragment).commit()
     }
 
-    /*companion object{
+    companion object{
         const val newBookActivityRequestCode = 1
-    }*/
+    }
 }
