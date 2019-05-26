@@ -14,52 +14,56 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.taller4.R
 import com.example.taller4.gui.adapters.BookListAdapter
-import com.example.taller4.database.entities.Book
 import com.example.taller4.gui.adapters.BookDetailAdapter
 import com.example.taller4.gui.dtos.BookDTO
+import com.example.taller4.gui.dtos.DtoMapper
 import com.example.taller4.gui.utilities.MyAdapter
 import com.example.taller4.viewmodels.BookViewModel
 import kotlinx.android.synthetic.main.content_main.view.*
 
-class FragmentList  : Fragment(){
+class FragmentList : Fragment() {
 
     private lateinit var viewModel: BookViewModel
     private val booksList = ArrayList<BookDTO>()
-    private lateinit var BookAdapter : MyAdapter
-    private var listenerTools : ListenerTools? = null
+    private lateinit var bookAdapter: MyAdapter
+    private var listenerTools: ListenerTools? = null
 
 
-    interface ListenerTools{
-        fun PortraitClick(book: BookDTO)
-        fun LandscapeClick(book: BookDTO)
+    interface ListenerTools {
+        fun portraitClick(book: BookDTO)
+        fun landscapeClick(book: BookDTO)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         super.onCreateView(inflater, container, savedInstanceState)
 
-        val view = inflater.inflate(R.layout.content_main, container,false)
+        val view = inflater.inflate(R.layout.content_main, container, false)
 
         initRecyclerView(resources.configuration.orientation, view)
 
         return view
     }
 
-    fun initRecyclerView(orientation: Int, container: View){
-        val gridLayoutManager = GridLayoutManager(this.context,2)
+    fun initRecyclerView(orientation: Int, container: View) {
+        val gridLayoutManager = GridLayoutManager(this.context, 2)
         val linearLayoutManager = LinearLayoutManager(this.context)
         val recyclerView = container.recyclerview_books
 
-        if(orientation == Configuration.ORIENTATION_PORTRAIT){
-            BookAdapter = BookListAdapter(books = booksList, clickListener = {book: BookDTO ->  listenerTools?.PortraitClick(book)})
+        if (orientation == Configuration.ORIENTATION_PORTRAIT) {
+            bookAdapter = BookListAdapter(
+                books = booksList,
+                clickListener = { book: BookDTO -> listenerTools?.portraitClick(book) })
             recyclerView.apply {
-                adapter = BookAdapter as BookListAdapter
+                adapter = bookAdapter as BookListAdapter
                 setHasFixedSize(true)
                 layoutManager = gridLayoutManager
             }
-        } else{
-            BookAdapter = BookDetailAdapter(books = booksList, clickListener = {book: BookDTO ->   listenerTools?.LandscapeClick(book)})
+        } else {
+            bookAdapter = BookDetailAdapter(
+                books = booksList,
+                clickListener = { book: BookDTO -> listenerTools?.landscapeClick(book) })
             recyclerView.apply {
-                adapter = BookAdapter as BookDetailAdapter
+                adapter = bookAdapter as BookDetailAdapter
                 setHasFixedSize(true)
                 layoutManager = linearLayoutManager
             }
@@ -68,67 +72,63 @@ class FragmentList  : Fragment(){
 
         viewModel = ViewModelProviders.of(this).get(BookViewModel::class.java)
 
-        var dtos  : List<BookDTO>
+        var BookDtos: List<BookDTO>
 
-        viewModel.getAllBooks().observe(this, Observer { books->
+        viewModel.getAllBooks().observe(this, Observer { books ->
             books?.let {
-                var a :ArrayList<BookDTO> = ArrayList<BookDTO>()
-                Log.i("BOOKTABLE",viewModel.getAllBooks().value.toString())
-                viewModel.getAllBooks().value?.forEach{
+                var allDtos: ArrayList<BookDTO> = ArrayList<BookDTO>()
+//                Log.i("BOOKTABLE",viewModel.getAllBooks().value.toString())
+                viewModel.getAllBooks().value?.forEach {
 
-                    var d = BookDTO(it.id,it.title,it.edition,it.isbn,it.summary,it.cover)
+                    var bookDTO = DtoMapper.mapToDto(it)
 
-                    viewModel.authors(it.id).observe(this, Observer {  authors->
+                    viewModel.authors(it.id).observe(this, Observer { authors ->
                         authors.let {
-                            Log.i("MATERRACE", "ds")
-                         //   d.authors = authors
-                            a.forEach{
-                                if (it.id== d.id){
+                            //                            Log.i("MATERRACE", "ds")
+                            //   d.authors = authors
+                            allDtos.forEach {
+                                if (it.id == bookDTO.id) {
                                     it.authors = authors
                                 }
                             }
-                            dtos = a
-                            BookAdapter.changeDataSet(dtos)
+                            BookDtos = allDtos
+                            bookAdapter.changeDataSet(BookDtos)
                         }
                     })
 
-                    viewModel.publisher(it.id).observe(this, Observer {  publisher->
+                    viewModel.publisher(it.id).observe(this, Observer { publisher ->
                         publisher.let {
-                            Log.i("MATERRACE", "ds")
-                           // d.publisher = authors
-                            a.forEach{
-                                if (it.id == d.id){
-                                  //  it.publisher= publisher
+                            //                            Log.i("MATERRACE", "ds")
+                            // d.publisher = authors
+                            allDtos.forEach {
+                                if (it.id == bookDTO.id) {
+                                    //  it.publisher= publisher
                                 }
                             }
-                            dtos = a
-                            BookAdapter.changeDataSet(dtos)
+                            BookDtos = allDtos
+                            bookAdapter.changeDataSet(BookDtos)
                         }
                     })
 
-                    viewModel.tags(it.id).observe(this, Observer {  tags->
+                    viewModel.tags(it.id).observe(this, Observer { tags ->
                         tags.let {
-                            Log.i("MATERRACE", "ds")
-                            d.tags = tags
-                            a.forEach{
-                                if (it.id == d.id){
-                                    it.tags= tags
+                            //                            Log.i("MATERRACE", "ds")
+                            bookDTO.tags = tags
+                            allDtos.forEach {
+                                if (it.id == bookDTO.id) {
+                                    it.tags = tags
 
                                 }
                             }
-                            dtos = a
-                            BookAdapter.changeDataSet(dtos)
+                            BookDtos = allDtos
+                            bookAdapter.changeDataSet(BookDtos)
                         }
                     })
 
-                    a.add(d)
-
-
+                    allDtos.add(bookDTO)
                 }
-
             }
         })
-
     }
 
     override fun onDetach() {

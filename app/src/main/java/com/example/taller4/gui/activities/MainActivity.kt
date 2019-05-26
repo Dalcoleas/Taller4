@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity(),  FragmentList.ListenerTools{
         changeFragment(resource, mainFrag)
     }
 
-    override fun PortraitClick(book: BookDTO) {
+    override fun portraitClick(book: BookDTO) {
         val intent = Intent(this@MainActivity, BookInfoActivity::class.java)
         intent.putExtra("title", book.title)
         intent.putExtra("summary", book.summary)
@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity(),  FragmentList.ListenerTools{
         startActivity(intent)
     }
 
-    override fun LandscapeClick(book: BookDTO) {
+    override fun landscapeClick(book: BookDTO) {
         detFrag = FragmentDetail.newInstance(book)
         changeFragment(R.id.land_main_cont_fragment, detFrag)
     }

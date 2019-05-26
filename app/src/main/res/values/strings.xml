@@ -17,4 +17,5 @@
     <string name="action_add_book">Add book</string>
     <string name="text_edition">Edition</string>
     <string name="title_new_book">New book</string>
+    <string name="help_enter_author_s_last_name">Enter author\'s last name</string>
 </resources>
