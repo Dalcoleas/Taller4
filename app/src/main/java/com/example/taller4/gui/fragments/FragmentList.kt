@@ -15,7 +15,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.taller4.R
 import com.example.taller4.gui.adapters.BookListAdapter
 import com.example.taller4.database.entities.Book
+import com.example.taller4.gui.adapters.BookDetailAdapter
 import com.example.taller4.gui.dtos.BookDTO
+import com.example.taller4.gui.utilities.MyAdapter
 import com.example.taller4.viewmodels.BookViewModel
 import kotlinx.android.synthetic.main.content_main.view.*
 
@@ -23,8 +25,8 @@ class FragmentList  : Fragment(){
 
     private lateinit var viewModel: BookViewModel
     private val booksList = ArrayList<BookDTO>()
-    private lateinit var bookAdapter : BookListAdapter
-    var listenerTools : ListenerTools? = null
+    private lateinit var BookAdapter : MyAdapter
+    private var listenerTools : ListenerTools? = null
 
 
     interface ListenerTools{
@@ -39,7 +41,6 @@ class FragmentList  : Fragment(){
 
         initRecyclerView(resources.configuration.orientation, view)
 
-
         return view
     }
 
@@ -49,16 +50,16 @@ class FragmentList  : Fragment(){
         val recyclerView = container.recyclerview_books
 
         if(orientation == Configuration.ORIENTATION_PORTRAIT){
-            bookAdapter = BookListAdapter(books = booksList, clickListener = {book: BookDTO ->  listenerTools?.PortraitClick(book)})
+            BookAdapter = BookListAdapter(books = booksList, clickListener = {book: BookDTO ->  listenerTools?.PortraitClick(book)})
             recyclerView.apply {
-                adapter = bookAdapter
+                adapter = BookAdapter as BookListAdapter
                 setHasFixedSize(true)
                 layoutManager = gridLayoutManager
             }
         } else{
-            bookAdapter = BookListAdapter(books = booksList, clickListener = {book: BookDTO ->   listenerTools?.LandscapeClick(book)})
+            BookAdapter = BookDetailAdapter(books = booksList, clickListener = {book: BookDTO ->   listenerTools?.LandscapeClick(book)})
             recyclerView.apply {
-                adapter = bookAdapter
+                adapter = BookAdapter as BookDetailAdapter
                 setHasFixedSize(true)
                 layoutManager = linearLayoutManager
             }
@@ -83,7 +84,7 @@ class FragmentList  : Fragment(){
                             d.authors = authors
                             a.add(d)
                             dtos = a
-                            bookAdapter.changeDataSet(dtos)
+                            BookAdapter.changeDataSet(dtos)
                         }
                     })
 

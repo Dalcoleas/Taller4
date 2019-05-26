@@ -3,26 +3,18 @@ package com.example.taller4.gui.activities
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
-import android.os.Parcelable
-import android.os.PersistableBundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProviders
 import com.example.taller4.R
 import com.example.taller4.database.BookDataBase
-import com.example.taller4.database.entities.Book
 import com.example.taller4.gui.dtos.BookDTO
 import com.example.taller4.gui.fragments.FragmentDetail
 import com.example.taller4.gui.fragments.FragmentList
-import com.example.taller4.gui.utilities.AppConstants
-import com.example.taller4.viewmodels.BookViewModel
-import kotlinx.android.synthetic.main.activity_main.*
-import java.io.Serializable
+
 
 class MainActivity : AppCompatActivity(),  FragmentList.ListenerTools{
 
-    private var booksList = ArrayList<BookDTO>()
     private lateinit var mainFrag : FragmentList
     private lateinit var detFrag : FragmentDetail
     private var resource = 0

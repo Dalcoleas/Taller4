@@ -1,12 +1,7 @@
 package com.example.taller4.gui.utilities
 
-import com.example.taller4.database.entities.Book
-
-object AppConstants{
-    val dataset_saveinstance_key = "CLE"
-    val MAIN_LIST_KEY = "key_list_books"
-}
+import com.example.taller4.gui.dtos.BookDTO
 
 interface MyAdapter{
-    fun changeDataSet(newDataSet : ArrayList<Book>)
+    fun changeDataSet(newDataSet : List<BookDTO>)
 }
