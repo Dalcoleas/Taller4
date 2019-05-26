@@ -19,7 +19,7 @@ interface BookDao {
     suspend fun insert(book: Book)//supend para ser llamado por otra funcion supend o una corrutina
 
     @Query("DELETE FROM books")
-    fun nukeTable()//elimina la tabla
+    fun deleteTable()//elimina la tabla
 
 
     @Query("SELECT * FROM books WHERE book_title LIKE :search ")

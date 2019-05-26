@@ -1,4 +1,21 @@
 <resources>
-    <string name="app_name">Taller4</string>
-    <string name="search_bt">Buscar</string>
+    <string name="app_name">BookDirectory</string>
+    <string name="action_search">Search</string>
+    <string name="help_buscar_libro">Search for a book</string>
+    <string name="title_new_book">New Book</string>
+    <string name="text_title">Title</string>
+    <string name="help_enter_book_title" translatable="false">Enter book title</string>
+    <string name="text_author" translatable="false">Author</string>
+    <string name="help_enter_author_s_name" translatable="false">Enter author\'s name</string>
+    <string name="text_isbn" translatable="false">ISBN</string>
+    <string name="text_summary">Summary</string>
+    <string name="help_enter_the_book_s_summary" translatable="false">Enter the book\'s summary</string>
+    <string name="text_cover">Cover</string>
+    <string name="help_url_to_the_book_s_cover" translatable="false">URL to the book\'s cover</string>
+    <string name="text_tags">Tags</string>
+    <string name="text_publisher">Publisher</string>
+    <string name="help_publisher_s_name" translatable="false">Publisher\'s name</string>
+    <string name="action_add_book">Add book</string>
+    <string name="text_edition">Edition</string>
+    <string name="title_new_book">New book</string>
 </resources>

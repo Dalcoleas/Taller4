@@ -24,6 +24,6 @@ interface BookXTagDao {
     suspend fun insert(bookXtag: BookXTag)//supend para ser llamado por otra funcion supend o una corrutina
 
     @Query("DELETE FROM BookXTags")
-    fun nukeTable()//elimina la tabla
+    fun deleteTable()//elimina la tabla
 
 }

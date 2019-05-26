@@ -75,7 +75,7 @@ public abstract class BookDataBase: RoomDatabase(){
         suspend fun populateDatabase(bookDao: BookDao) {
             // Start the app with a clean database every time.
             // Not needed if you only populate on creation.
-            bookDao.nukeTable()
+            bookDao.deleteTable()
 
             // Libro 1
             var book = Book(
@@ -203,7 +203,7 @@ public abstract class BookDataBase: RoomDatabase(){
         suspend fun populateDatabase(tagDao: TagDao) {
             // Start the app with a clean database every time.
             // Not needed if you only populate on creation.
-            tagDao.nukeTable()
+            tagDao.deleteTable()
 
             var tag = Tag("Clásico")
             tagDao.insert(tag)//1
@@ -245,7 +245,7 @@ public abstract class BookDataBase: RoomDatabase(){
         suspend fun populateDatabase(publisherDao: PublisherDao) {
             // Start the app with a clean database every time.
             // Not needed if you only populate on creation.
-            publisherDao.nukeTable()
+            publisherDao.deleteTable()
 
             var publisher = Publisher("Siruela")
             publisherDao.insert(publisher)
@@ -270,7 +270,7 @@ public abstract class BookDataBase: RoomDatabase(){
         suspend fun populateDatabase(authorDao: AuthorDao) {
             // Start the app with a clean database every time.
             // Not needed if you only populate on creation.
-            authorDao.nukeTable()
+            authorDao.deleteTable()
 
             var author = Author("Rómulo","Gallegos")
             authorDao.insert(author)
@@ -301,7 +301,7 @@ public abstract class BookDataBase: RoomDatabase(){
         suspend fun populateDatabase(bookXAuthorDao: BookXAuthorDao) {
             // Start the app with a clean database every time.
             // Not needed if you only populate on creation.
-            bookXAuthorDao.nukeTable()
+            bookXAuthorDao.deleteTable()
 
             // Libro 1, Doña Bárbara
             var bookXAuthor = BookXAuthor(1,1)
@@ -348,7 +348,7 @@ public abstract class BookDataBase: RoomDatabase(){
         suspend fun populateDatabase(bookXTagDao: BookXTagDao) {
             // Start the app with a clean database every time.
             // Not needed if you only populate on creation.
-            bookXTagDao.nukeTable()
+            bookXTagDao.deleteTable()
 
             // Libro 1: Doña Bárbara
             var bookTag = BookXTag(1, 1)

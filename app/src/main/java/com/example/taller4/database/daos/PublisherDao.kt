@@ -22,5 +22,5 @@ interface PublisherDao {
     suspend fun insert(publisher: Publisher)//supend para ser llamado por otra funcion supend o una corrutina
 
     @Query("DELETE FROM publishers")
-    fun nukeTable()//elimina la tabla
+    fun deleteTable()//elimina la tabla
 }

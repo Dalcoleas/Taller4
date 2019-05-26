@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BookDirectory</string>
+    <string name="action_add_book" translatable="false">Agregar libro</string>
+    <string name="title_new_book">Nuevo libro</string>
+    <string name="text_title">Título</string>
+    <string name="text_tags">Etiquetas</string>
+    <string name="text_summary">Resumen</string>
+    <string name="text_publisher">Editorial</string>
+    <string name="text_edition">Edición</string>
+    <string name="text_cover">Portada</string>
+    <string name="text_author">Autor</string>
+    <string name="help_url_to_the_book_s_cover">URL de la portada</string>
+    <string name="help_publisher_s_name">Nombre de la editorial</string>
+    <string name="help_enter_the_book_s_summary">Ingresa el resumen del libro</string>
+    <string name="help_enter_book_title">Ingresa el nombre del libro</string>
+    <string name="help_enter_author_s_name">Ingresa el nombre del autor</string>
+    <string name="help_buscar_libro">Busca un libro</string>
+    <string name="action_search">Buscar</string>
+</resources>

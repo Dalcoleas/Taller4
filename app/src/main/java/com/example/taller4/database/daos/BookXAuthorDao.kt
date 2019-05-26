@@ -25,6 +25,6 @@ interface BookXAuthorDao {
     suspend fun insert(bookXAuthor: BookXAuthor)//supend para ser llamado por otra funcion supend o una corrutina
 
     @Query("DELETE FROM bookxauthors")
-    fun nukeTable()//elimina la tabla
+    fun deleteTable()//elimina la tabla
 
 }

@@ -13,9 +13,14 @@ data class BookDTO(
     val cover: String
 ) {
     lateinit var publisher: Publisher
-       var authors: List<Author>
+    var authors: List<Author>
     lateinit var tags: List<Tag>
+
     init {
         authors = emptyList()
+    }
+
+    override fun toString(): String {
+        return super.toString()
     }
 }

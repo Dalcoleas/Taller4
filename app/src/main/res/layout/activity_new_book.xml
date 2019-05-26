@@ -1,155 +1,233 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".gui.activities.NewBookActivity" tools:layout_editor_absoluteY="81dp">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".gui.activities.NewBookActivity"
+    tools:layout_editor_absoluteY="81dp">
 
     <TextView
-            android:text="New Book"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv_new_book" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
-            app:layout_constraintStart_toStartOf="parent" android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp" android:layout_marginTop="16dp"
-            app:layout_constraintHorizontal_bias="0.498" android:textSize="30sp" android:textColor="#000000"/>
+        android:id="@+id/tv_new_book"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="@string/title_new_book"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
-            android:text="Titulo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView2"
-            app:layout_constraintTop_toBottomOf="@+id/tv_new_book" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="88dp" android:layout_marginStart="88dp" android:layout_marginTop="44dp"/>
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginLeft="88dp"
+        android:layout_marginTop="44dp"
+        android:text="@string/text_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_new_book" />
+
     <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/title_newbook" android:layout_marginTop="28dp"
-            app:layout_constraintTop_toBottomOf="@+id/tv_new_book"
-            android:hint="Titulo" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="53dp"
-            android:layout_marginRight="53dp"/>
+        android:id="@+id/title_newbook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="53dp"
+        android:layout_marginRight="53dp"
+        android:ems="10"
+        android:hint="@string/help_enter_book_title"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_new_book" />
+
     <TextView
-            android:text="Autor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView3"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="88dp" android:layout_marginStart="88dp" android:layout_marginTop="36dp"/>
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginLeft="88dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/text_author"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
     <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/author_newbook"
-            android:hint="Autor" app:layout_constraintTop_toBottomOf="@+id/title_newbook"
-            android:layout_marginEnd="52dp" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginRight="52dp" android:layout_marginTop="8dp"/>
+        android:id="@+id/author_newbook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginRight="52dp"
+        android:ems="10"
+        android:hint="@string/help_enter_author_s_name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title_newbook" />
+
     <TextView
-            android:text="ISBN"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView4"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="88dp" android:layout_marginStart="88dp" android:layout_marginTop="28dp"/>
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginLeft="88dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/text_isbn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
     <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/isbn_newbook"
-            android:hint="ISBN" android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/author_newbook"
-            android:layout_marginEnd="52dp" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginRight="52dp"/>
+        android:id="@+id/isbn_newbook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginRight="52dp"
+        android:ems="10"
+        android:hint="@string/text_isbn"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/author_newbook" />
+
     <TextView
-            android:text="Resumen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView5" android:layout_marginTop="36dp"
-            app:layout_constraintTop_toBottomOf="@+id/textView4" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="60dp" android:layout_marginStart="60dp"/>
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="60dp"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/text_summary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
     <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/summary_newbook"
-            android:hint="Resumen" android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/isbn_newbook"
-            android:layout_marginEnd="52dp" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginRight="52dp"/>
+        android:id="@+id/summary_newbook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginRight="52dp"
+        android:ems="10"
+        android:hint="@string/help_enter_the_book_s_summary"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/isbn_newbook" />
+
     <TextView
-            android:text="Imagen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView6"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="72dp" android:layout_marginStart="72dp" android:layout_marginTop="32dp"/>
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="72dp"
+        android:layout_marginLeft="72dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/text_cover"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
     <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/cover_newbook"
-            android:hint="Link Imagen..." android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/summary_newbook" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="52dp" android:layout_marginRight="52dp"/>
+        android:id="@+id/cover_newbook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginRight="52dp"
+        android:ems="10"
+        android:hint="@string/help_url_to_the_book_s_cover"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/summary_newbook" />
+
     <TextView
-            android:text="Tags"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView7" android:layout_marginTop="36dp"
-            app:layout_constraintTop_toBottomOf="@+id/textView6" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="88dp" android:layout_marginStart="88dp"/>
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="88dp"
+        android:layout_marginLeft="88dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/text_tags"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
     <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/tags_newbook"
-            android:hint="Tags" android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/cover_newbook"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="53dp"
-            android:layout_marginRight="53dp"/>
+        android:id="@+id/tags_newbook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="53dp"
+        android:layout_marginRight="53dp"
+        android:ems="10"
+        android:hint="@string/text_tags"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cover_newbook" />
+
     <TextView
-            android:text="Publisher"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView8"
-            app:layout_constraintTop_toBottomOf="@+id/textView7" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="64dp" android:layout_marginStart="64dp" android:layout_marginTop="28dp"/>
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="64dp"
+        android:layout_marginLeft="64dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/text_publisher"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
     <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/publisher_newbook"
-            android:hint="Publisher" android:layout_marginTop="8dp"
-            app:layout_constraintTop_toBottomOf="@+id/tags_newbook" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="53dp" android:layout_marginRight="53dp"/>
+        android:id="@+id/publisher_newbook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="53dp"
+        android:layout_marginRight="53dp"
+        android:ems="10"
+        android:hint="@string/help_publisher_s_name"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tags_newbook" />
+
     <Button
-            android:text="Agregar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/bt_add_newbook" android:layout_marginTop="460dp"
-            app:layout_constraintTop_toBottomOf="@+id/tv_new_book" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="160dp" android:layout_marginStart="160dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp" android:layout_marginRight="8dp"
-            app:layout_constraintHorizontal_bias="0.006"/>
+        android:id="@+id/bt_add_newbook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="160dp"
+        android:layout_marginLeft="160dp"
+        android:layout_marginTop="460dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:text="@string/action_add_book"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.006"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_new_book" />
+
     <TextView
-            android:text="Edition"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="76dp" android:layout_marginStart="76dp" android:layout_marginTop="36dp"/>
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="76dp"
+        android:layout_marginLeft="76dp"
+        android:layout_marginTop="36dp"
+        android:text="@string/text_edition"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
     <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:inputType="textPersonName"
-            android:ems="10"
-            android:id="@+id/edition_newbook"
-            app:layout_constraintTop_toBottomOf="@+id/publisher_newbook" app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="52dp" android:layout_marginRight="52dp" android:layout_marginTop="8dp"
-            android:hint="Edition"/>
+        android:id="@+id/edition_newbook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginRight="52dp"
+        android:ems="10"
+        android:hint="@string/text_edition"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/publisher_newbook" />
 </androidx.constraintlayout.widget.ConstraintLayout>
