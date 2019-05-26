@@ -10,7 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.taller4.R
 import com.example.taller4.database.BookDataBase
+import com.example.taller4.database.entities.Author
 import com.example.taller4.database.entities.Book
+import com.example.taller4.database.entities.Tag
 import com.example.taller4.gui.dtos.BookDTO
 import com.example.taller4.gui.fragments.FragmentDetail
 import com.example.taller4.gui.fragments.FragmentList
@@ -89,6 +91,12 @@ class MainActivity : AppCompatActivity(),  FragmentList.ListenerTools{
         if(requestCode == newBookActivityRequestCode && resultCode == Activity.RESULT_OK){
             data?.let {
                 bookViewModel.insert(Book(it.getStringExtra("Title"), it.getStringExtra("Edition").toInt(), it.getStringExtra("ISBN"),it.getStringExtra("Resumen"),it.getStringExtra("Cover"), 1))
+            }
+            data?.let{
+                bookViewModel.insert(Author(it.getStringExtra("Author"), it.getStringExtra("Author")))
+            }
+            data?.let{
+                bookViewModel.insert(Tag(it.getStringExtra("Tag")))
             }
         }
     }

@@ -23,8 +23,10 @@ class BookViewModel(
 
     init {
         val bookDao = BookDataBase.getInstance(app, viewModelScope).bookDao()
+        val authorDao = BookDataBase.getInstance(app, viewModelScope).authorDao()
+        val tagDao = BookDataBase.getInstance(app, viewModelScope).tagDao()
 
-        repository = BookRepository(bookDao)
+        repository = BookRepository(bookDao,authorDao,tagDao)
     }
 
     /** Bloque de Book **/
@@ -33,6 +35,21 @@ class BookViewModel(
         {
             repository.insert(book)
         }
+
+    //Bloque de Author
+    fun insert(author: Author) =
+         viewModelScope.launch(Dispatchers.IO)
+         {
+             repository.insert(author)
+         }
+
+    /** Bloque de Tag**/
+   fun insert(tag: Tag) =
+       viewModelScope.launch(Dispatchers.IO)
+       {
+           repository.insert(tag)
+       }
+
 
     /** Bloque de funciones de búsqueda de libros**/
     /** Obtener todos los libros **/

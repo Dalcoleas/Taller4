@@ -2,13 +2,15 @@ package com.example.taller4.repositories
 
 import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
+import com.example.taller4.database.daos.AuthorDao
 import com.example.taller4.database.daos.BookDao
+import com.example.taller4.database.daos.TagDao
 import com.example.taller4.database.entities.Author
 import com.example.taller4.database.entities.Book
 import com.example.taller4.database.entities.Publisher
 import com.example.taller4.database.entities.Tag
 
-class BookRepository(private val bookDao : BookDao){
+class BookRepository(private val bookDao : BookDao, private val authorDao : AuthorDao, private val tagDao: TagDao){
 
 
     var allBooks : LiveData<List<Book>> = bookDao.getAll()
@@ -22,12 +24,19 @@ class BookRepository(private val bookDao : BookDao){
 
     }
 
-    /*@WorkerThread
+    @WorkerThread
     suspend fun insert(author: Author){
 
-        bookDao.insert(author)
+        authorDao.insert(author)
 
-    }*/
+    }
+
+    @WorkerThread
+    suspend fun insert(tag: Tag){
+
+        tagDao.insert(tag)
+
+    }
 
     @WorkerThread
     fun searchByTitle(title : String){
