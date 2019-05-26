@@ -81,10 +81,38 @@ class FragmentList  : Fragment(){
                     viewModel.authors(it.id).observe(this, Observer {  authors->
                         authors.let {
                             Log.i("MATERRACE", "ds")
-                            d.authors = authors
+                         //   d.authors = authors
                             a.forEach{
                                 if (it.isbn == d.isbn){
                                     it.authors = authors
+                                }
+                            }
+                            dtos = a
+                            BookAdapter.changeDataSet(dtos)
+                        }
+                    })
+
+                    viewModel.publisher(it.id).observe(this, Observer {  publisher->
+                        publisher.let {
+                            Log.i("MATERRACE", "ds")
+                           // d.publisher = authors
+                            a.forEach{
+                                if (it.isbn == d.isbn){
+                                  //  it.publisher= publisher
+                                }
+                            }
+                            dtos = a
+                            BookAdapter.changeDataSet(dtos)
+                        }
+                    })
+
+                    viewModel.tags(it.id).observe(this, Observer {  tags->
+                        tags.let {
+                            Log.i("MATERRACE", "ds")
+                            d.tags = tags
+                            a.forEach{
+                                if (it.isbn == d.isbn){
+                                    it.tags= tags
                                 }
                             }
                             dtos = a

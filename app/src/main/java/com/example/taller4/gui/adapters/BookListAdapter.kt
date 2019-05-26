@@ -1,5 +1,6 @@
 package com.example.taller4.gui.adapters
 
+import android.nfc.Tag
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,6 +36,9 @@ class BookListAdapter (var books: List<BookDTO> , val clickListener: (BookDTO) -
     class BookViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         fun bind(book: BookDTO, clickListener: (BookDTO) -> Unit) = with(itemView) {
             tv_title_book.text = book.title
+            if(book.tags!= emptyList<Tag>()){
+                tv_publisher.text = book.tags.get(0).tag_name
+            }
             Glide.with(itemView.context).load(book.cover).into(itemView.img_book)
 
             itemView.setOnClickListener { clickListener(book) }
