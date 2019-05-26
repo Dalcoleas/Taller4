@@ -73,13 +73,13 @@ class BookViewModel(
 //    /** Fin de bloque de Book **/
 //
 //
-//    /** Bloque de Author **/
-//    fun insert(author: Author) =
-//        viewModelScope.launch(Dispatchers.IO)
-//        {
-//            repository.insert(author)
-//        }
-//
+    //Bloque de Author
+   /*fun insert(author: Author) =
+        viewModelScope.launch(Dispatchers.IO)
+        {
+            repository.insert(author)
+        }*/
+
 //    /** Obtener todos los autores **/
 //    fun getAllAuthors(): LiveData<List<Author>> = repository.getAllAuthors()
 //

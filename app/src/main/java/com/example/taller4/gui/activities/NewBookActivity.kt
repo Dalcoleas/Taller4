@@ -25,6 +25,7 @@ class NewBookActivity : AppCompatActivity() {
             intent.putExtra("Cover", cover_newbook.text.toString())
             intent.putExtra("Tag", tags_newbook.text.toString())
             intent.putExtra("Publisher", publisher_newbook.text.toString())
+            intent.putExtra("Edition", edition_newbook.text.toString())
 
             setResult(Activity.RESULT_OK, intent)
 

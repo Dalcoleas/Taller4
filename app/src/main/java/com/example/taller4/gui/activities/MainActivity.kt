@@ -83,13 +83,13 @@ class MainActivity : AppCompatActivity(),  FragmentList.ListenerTools{
         const val newBookActivityRequestCode = 1
     }
 
-    /*override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
         if(requestCode == newBookActivityRequestCode && resultCode == Activity.RESULT_OK){
             data?.let {
-                bookViewModel.insert(Book(it.getStringExtra("Title")))
+                bookViewModel.insert(Book(it.getStringExtra("Title"), it.getStringExtra("Edition").toInt(), it.getStringExtra("ISBN"),it.getStringExtra("Resumen"),it.getStringExtra("Cover"), 1))
             }
         }
-    }*/
+    }
 }

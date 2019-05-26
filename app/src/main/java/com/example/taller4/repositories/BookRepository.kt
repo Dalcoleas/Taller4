@@ -19,6 +19,14 @@ class BookRepository(private val bookDao : BookDao){
         bookDao.insert(book)
 
     }
+
+    /*@WorkerThread
+    suspend fun insert(author: Author){
+
+        bookDao.insert(author)
+
+    }*/
+
     @WorkerThread
     fun searchByTitle(title : String){
         allBooks = bookDao.findBookbyTitle(title)
