@@ -2,7 +2,6 @@
     <string name="app_name">BookDirectory</string>
     <string name="action_search">Search</string>
     <string name="help_buscar_libro">Search for a book</string>
-    <string name="title_new_book">New Book</string>
     <string name="text_title">Title</string>
     <string name="help_enter_book_title" translatable="false">Enter book title</string>
     <string name="text_author" translatable="false">Author</string>
