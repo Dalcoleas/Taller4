@@ -19,7 +19,7 @@ class NewBookActivity : AppCompatActivity() {
             val intent = Intent()
 
             intent.putExtra("Title", title_newbook.text.toString())
-            intent.putExtra("Author", author_newbook.text.toString())
+//            intent.putExtra("Author", author_newbook.text.toString())
             intent.putExtra("ISBN", isbn_newbook.text.toString())
             intent.putExtra("Resumen", summary_newbook.text.toString())
             intent.putExtra("Cover", cover_newbook.text.toString())
